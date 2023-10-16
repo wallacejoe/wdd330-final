@@ -3,6 +3,7 @@
   --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
   /* colors */
   --primary-color: #4657f0;
+  --secondary-color: grey;
   --font-color: black;
 }
 * {
@@ -54,6 +55,15 @@ header .company h1 {
 
 .navigation img {
   max-width: 4em;
+}
+
+/*Main Styles*/
+.content {
+  background-color: var(--secondary-color);
+  border: 1px solid black;
+  margin: 5%;
+  display: flex;
+  justify-content: center;
 }
 
 /*Footer styles*/
