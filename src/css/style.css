@@ -1,0 +1,66 @@
+:root {
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  /* colors */
+  --primary-color: #4657f0;
+  --font-color: black;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-base);
+  color: var(--font-color);
+}
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 2px;
+}
+
+/*Header Styles*/
+header {
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 5%;
+  padding: 0 2% 3% 2%;
+}
+
+header .company {
+  font-size: 60%;
+  padding: 5%;
+}
+
+header .company h1 {
+  margin-bottom: -5px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navigation img {
+  max-width: 4em;
+}
+
+/*Footer styles*/
+footer {
+  background-color: var(--primary-color);
+  display: block;
+  padding: 10% 0;
+  text-align: center;
+  font-size: 70%;
+}
