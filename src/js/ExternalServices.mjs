@@ -1,5 +1,4 @@
-const baseURL = import.meta.env.VITE_SERVER_URL
-//const baseURL = "http://server-nodejs.cit.byui.edu:3000/";
+const apiKey = import.meta.env.VITE_NEWSDATA_KEY
 
 function convertToJson(res) {
   if (res.ok) {
@@ -10,25 +9,33 @@ function convertToJson(res) {
 }
 
 export default class ExternalServices {
-  constructor (category) {}
-  async getData(category) {
-    const response = await fetch(baseURL + `products/search/${category}`);
-    const data = await convertToJson(response);
-    return data.Result;
+  //constructor (category) {}
+  async getData(){
+    try {
+      const response = await fetch(`https://newsdata.io/api/1/news?apikey=${apiKey}&country=us`)
+      const result = await convertToJson(response)
+      console.log(result)
+      return result
+    } catch (error) {
+      console.error(error)
+    }
   }
-  async findProductById(id) {
-    const response = await fetch(baseURL + `product/${id}`);
-    const data = await convertToJson(response);
-    return data.Result;
-  }
-  async checkout(payload) {
+  /*async getData() {
+    const url = "https://google-news13.p.rapidapi.com/latest?lr=en-US";
     const options = {
-      method: "POST",
+      method: "GET",
       headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
+        "X-RapidAPI-Key": `${apiKey}`,
+        "X-RapidAPI-Host": `${apiLink}`
+      }
     };
-    return await fetch(baseURL + "checkout/", options).then(convertToJson);
-  }
+
+    try {
+      const response = await fetch(url, options);
+      const result = await convertToJson(response);
+      console.log(result);
+      return result
+    } catch (error) {
+      console.error(error);
+    }*/
 }

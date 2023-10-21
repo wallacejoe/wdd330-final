@@ -50,9 +50,6 @@ export function renderListWithTemplate(
 // list items to the html element using the template.
 export function renderWithTemplate(template, parentElement, data = {}, position = "afterbegin") {
   parentElement.insertAdjacentHTML(position, template);
-  //if (callback) {
-  //  callback(data)
-  //}
 }
 
 export async function loadHeaderFooter(){
@@ -64,41 +61,10 @@ export async function loadHeaderFooter(){
 
   renderWithTemplate(header, headerElement)
   renderWithTemplate(footer, footerElement)
-
-  getNumFromCart()
 }
 
 async function loadTemplate(path){
   let html = await fetch(path)
   const template = await html.text()
   return template
-}
-
-export function getNumFromCart() {
-  let num = "";
-  const list = getLocalStorage("so-cart");
-  if (list != null) {
-    num = list.length;
-  }
-  document.querySelector(".cart-num").innerHTML = num;
-}
-
-export function alertMessage(message, scroll = true) {
-  const alert = document.createElement("div");
-  alert.classList.add("alert");
-  alert.innerHTML = `<p>${message}</p><span>X</span>`;
-
-  alert.addEventListener("click", function (e) {
-    if (e.target.tagName == "SPAN") {
-      main.removeChild(this);
-    }
-  });
-  const main = document.querySelector("main");
-  main.prepend(alert);
-  if (scroll) window.scrollTo(0, 0);
-}
-
-export function removeAlerts() {
-  const alerts = document.querySelectorAll(".alert");
-  alerts.forEach((alert) => document.querySelector("main").removeChild(alert))
 }
