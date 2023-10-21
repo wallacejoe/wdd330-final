@@ -13,19 +13,50 @@
     <header id="main-header" class="divider"></header>
     <main class="divider">
       <div id="news-highlights">
-        
+
       </div>
-      <div id="weather" class="content">
-        <p>Todays weather</p>
+      <div class="weather-sections">
+        <section>
+          <h3>Current Weather Conditions</h3>
+          <div class="weather">
+            <div>
+              <img id="weatherIcon" src="#" alt="Weather Icon">
+              <h4><span id="condition">Weather Condition</span></h4>
+              </div>
+                <div>
+                  <p><span id="temperature">Temp Placeholder</span>°F</p>
+                  <p>Humidity: <span id="humidity"></span>%</p>
+                </div>
+              </div>
+            </section>
+            <section class="three-day-forecast">
+              <h3>Three Day Weather Forecast</h3>
+              <div class="forecast">
+                <div class="forecast-day">
+                  <p class="top-temp">Temp: <span id="first-temp"></span>°F</p>
+                  <p><span id="first-day"></span></p>
+                </div>
+              <div class="forecast-day">
+                <p class="top-temp">Temp: <span id="second-temp"></span>°F</p>
+                <p><span id="second-day"></span></p>
+              </div>
+            <div class="forecast-day">
+              <p class="top-temp">Temp: <span id="third-temp"></span>°F</p>
+              <p><span id="third-day"></span></p>
+            </div>
+          </div>
+        </section>
       </div>
       <!--<button id="favoriteBtn"></button>-->
       <div id="recent-favorite" class="content">
         <p>Recent favorites</p>
       </div>
       <div id="articles" class="content">
-        <p>Articles</p>
+
       </div>
+      <button id="nextPage">More Articles</button>
     </main>
     <footer id="main-footer"></footer>
+    <script src="./js/weather.js"></script>
   </body>
 </html>

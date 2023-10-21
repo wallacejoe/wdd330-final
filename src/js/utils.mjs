@@ -36,7 +36,7 @@ export function renderListWithTemplate(
   templateFn,
   parentElement,
   list,
-  position = "afterbegin",
+  position = "beforeend",
   clear = false
 ) {
   const htmlStrings = list.map(templateFn);

@@ -10,8 +10,9 @@ export default class NewsList {
   async init() {
     this.list = await this.dataSource.getData()
     //this.sortNewsList()
-    const article = this.list.results[0]
-    this.renderList(article)
+    const articles = this.list.results
+    this.renderList(articles)
+    document.getElementById("nextPage").setAttribute("value", `${this.list.nextPage}`)
   }
   async initHighlights() {
     this.list = await this.dataSource.getData()

@@ -9,10 +9,16 @@ function convertToJson(res) {
 }
 
 export default class ExternalServices {
-  //constructor (category) {}
+  constructor (pageKey) {
+    this.pageKey = pageKey
+  }
   async getData(){
+    let nextPage = ""
+    if (this.pageKey) {
+      nextPage = `&page=${this.pageKey}`
+    }
     try {
-      const response = await fetch(`https://newsdata.io/api/1/news?apikey=${apiKey}&country=us`)
+      const response = await fetch(`https://newsdata.io/api/1/news?apikey=${apiKey}&country=us${nextPage}`)
       const result = await convertToJson(response)
       console.log(result)
       return result
@@ -20,22 +26,4 @@ export default class ExternalServices {
       console.error(error)
     }
   }
-  /*async getData() {
-    const url = "https://google-news13.p.rapidapi.com/latest?lr=en-US";
-    const options = {
-      method: "GET",
-      headers: {
-        "X-RapidAPI-Key": `${apiKey}`,
-        "X-RapidAPI-Host": `${apiLink}`
-      }
-    };
-
-    try {
-      const response = await fetch(url, options);
-      const result = await convertToJson(response);
-      console.log(result);
-      return result
-    } catch (error) {
-      console.error(error);
-    }*/
 }

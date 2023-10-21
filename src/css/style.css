@@ -59,7 +59,7 @@ header .company h1 {
 }
 
 /*Main Styles*/
-.content, .news-card {
+.content, .news-card, button {
   background-color: var(--secondary-color);
   border: 1px solid black;
   margin: 5%;
@@ -67,7 +67,7 @@ header .company h1 {
   justify-content: center;
 }
 
-#news-highlights {
+#news-highlights, #articles {
   background-color: var(--primary-color);
   border: 1px solid black;
   margin: 5%;
@@ -82,6 +82,62 @@ header .company h1 {
   align-items: center;
   font-size: 75%;
   padding: 3%;
+}
+
+/*Weather Styles*/
+.weather-sections {
+  margin: 5%;
+  padding: 5%;
+  background-color: var(--primary-color);
+}
+
+.weather {
+  background-color: var(--secondary-color);
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather img, .weather p {
+  margin: 0;
+}
+
+.weather img {
+  margin-bottom: -40px;
+}
+
+.forecast {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.forecast-day {
+  background-color: var(--secondary-color);
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.forecast-day p {
+  padding: 15px 0;
+  margin: 0;
+}
+
+.forecast-day .top-temp {
+  margin-bottom: -20px;
+}
+
+/*Button Styles*/
+button {
+  width: 90%;
+}
+
+button:hover {
+  background-color: var(--primary-color);
 }
 
 /*Footer styles*/

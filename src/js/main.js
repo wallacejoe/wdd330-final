@@ -4,8 +4,19 @@ import NewsList from "./NewsList.mjs";
 
 loadHeaderFooter()
 
-const test = new ExternalServices()
+const dataSource = new ExternalServices()
 const element = document.getElementById("news-highlights")
-const news = new NewsList(test, element)
+const newsHighlights = new NewsList(dataSource, element)
+newsHighlights.initHighlights()
 
-news.initHighlights()
+const newsElement = document.getElementById("articles")
+const news = new NewsList(dataSource, newsElement)
+news.init()
+
+const nextPage = document.getElementById("nextPage")
+nextPage.addEventListener("click", () => {
+    const key = nextPage.getAttribute("value")
+    let data = new ExternalServices(key)
+    const articles = new NewsList(data, newsElement)
+    articles.init()
+})
