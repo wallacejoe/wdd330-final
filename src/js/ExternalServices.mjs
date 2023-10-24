@@ -9,21 +9,41 @@ function convertToJson(res) {
 }
 
 export default class ExternalServices {
-  constructor (pageKey) {
-    this.pageKey = pageKey
-  }
-  async getData(){
-    let nextPage = ""
-    if (this.pageKey) {
-      nextPage = `&page=${this.pageKey}`
-    }
+  //constructor () {}
+  async getData(param = "", search = false){
     try {
-      const response = await fetch(`https://newsdata.io/api/1/news?apikey=${apiKey}&country=us${nextPage}`)
+      let response
+      if (param && !search) {
+        response = await fetch(`https://newsdata.io/api/1/news?apikey=${apiKey}&country=us&page=${param}`)
+      }
+      else if (search) {
+        response = await fetch(`https://newsdata.io/api/1/news?apikey=${apiKey}&country=us&qInTitle=${param}`)
+      }
+      else {
+        response = await fetch(`https://newsdata.io/api/1/news?apikey=${apiKey}&country=us`)
+      }
+      const result = await convertToJson(response)
+      return result
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  findArticleById(id, list){
+    let article;
+    list.forEach(element => {
+      if (element.article_id == id) {
+        article = element
+      }
+    });
+    return article
+    // scrapped due to api issues
+    /*try {
+      const response = await fetch(`https://newsdata.io/api/1/news?apikey=${apiKey}&page=${id}`)
       const result = await convertToJson(response)
       console.log(result)
       return result
     } catch (error) {
       console.error(error)
-    }
+    }*/
   }
 }

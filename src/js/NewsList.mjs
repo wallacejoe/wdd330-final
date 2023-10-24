@@ -1,32 +1,39 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, setLocalStorage } from "./utils.mjs";
 
 export default class NewsList {
-  constructor(dataSource, listElement) {
+  constructor(dataSource) {
     //this.category = category;
     this.dataSource = dataSource;
-    this.listElement = listElement;
-    this.list = {};
+    this.listElement;
+    this.list = [];
   }
-  async init() {
-    this.list = await this.dataSource.getData()
-    //this.sortNewsList()
-    const articles = this.list.results
+  async init(element, param = "", search = false) {
+    const data = await this.dataSource.getData(param, search)
+    data.results.forEach(article => {
+      this.list.push(article)
+    });
+    this.listElement = element
+    const articles = this.list
     this.renderList(articles)
-    document.getElementById("nextPage").setAttribute("value", `${this.list.nextPage}`)
+    document.getElementById("nextPage").setAttribute("value", `${data.nextPage}`)
+    // stores a list of articles to local storage.
+    // this allows us to "searchById" without using the api.
+    setLocalStorage("so-articles", this.list)
   }
-  async initHighlights() {
-    this.list = await this.dataSource.getData()
+  async initHighlights(element) {
+    const data = await this.dataSource.getData()
     let articles = []
-    articles.push(this.list.results[0])
-    articles.push(this.list.results[1])
+    this.listElement = element
+    articles.push(data.results[0])
+    articles.push(data.results[1])
     this.renderList(articles)
   }
   newsCardTemplate(article) {
     let image
     if (article.image_url == null) {
-      image = `<a href="#">View article</a>`
+      image = `<a href="/articles.html?id=${article.article_id}">View article</a>`
     } else {
-      image = `<a href="#">
+      image = `<a href="/articles.html?id=${article.article_id}">
       <img
       src="${article.image_url}"
       alt="Image of ${article.title}"/></a>`
@@ -45,7 +52,8 @@ export default class NewsList {
     renderListWithTemplate(
       this.newsCardTemplate,
       this.listElement,
-      article
+      article,
+      true
     );
   }
 }

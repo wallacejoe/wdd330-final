@@ -1,0 +1,38 @@
+@media only screen and (min-width: 58em) {
+
+    /*Header Styles*/
+  header {
+    flex-direction: row;
+    margin-bottom: 5%;
+    margin-left: 7%;
+    max-width: 86%;
+    justify-content: space-between;
+    padding-bottom: 1%;
+  }
+  
+  header .company {
+    padding: 2%;
+  }
+  
+  .navigation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 20em;
+  }
+
+    /*Article Styles*/
+    .article-detail {
+        max-width: 70%;
+        margin-left: 15%;
+    }
+
+    /*Footer styles*/
+    footer {
+        padding: 3% 0;
+        font-size: 100%;
+        max-width: 86%;
+        margin-left: 7%;
+    }
+
+}
