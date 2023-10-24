@@ -11,10 +11,10 @@ export default class NewsDetails {
     this.article = this.dataSource.findArticleById(this.articleId, list);
     this.renderArticleDetails("main");
     document
-      .getElementById("addTofavorites")
-      .addEventListener("click", this.addTofavorites.bind(this));
+      .getElementById("addToFavorites")
+      .addEventListener("click", this.addToFavorites.bind(this));
   }
-  addTofavorites() {
+  addToFavorites() {
     let favorites = getLocalStorage("so-favorites") || [];
     favorites.push(this.article);
     setLocalStorage("so-favorites", favorites);

@@ -31,9 +31,9 @@ export default class NewsList {
   newsCardTemplate(article) {
     let image
     if (article.image_url == null) {
-      image = `<a href="/articles.html?id=${article.article_id}">View article</a>`
+      image = `<a href="./ArticlePage/articles.html?id=${article.article_id}">View article</a>`
     } else {
-      image = `<a href="/articles.html?id=${article.article_id}">
+      image = `<a href="./ArticlePage/articles.html?id=${article.article_id}">
       <img
       src="${article.image_url}"
       alt="Image of ${article.title}"/></a>`
