@@ -1,4 +1,4 @@
-import { renderListWithTemplate, setLocalStorage } from "./utils.mjs";
+import { renderWithTemplate, getLocalStorage, renderListWithTemplate, setLocalStorage } from "./utils.mjs";
 
 export default class NewsList {
   constructor(dataSource) {
@@ -28,6 +28,16 @@ export default class NewsList {
     articles.push(data.results[1])
     this.renderList(articles)
   }
+  async initFavorites(element) {
+    const data = getLocalStorage("so-favorites") || []
+    this.listElement = element
+    if (data.length > 0) {
+      this.render(data[data.length - 1])
+    }
+    else {
+      this.listElement.textContent = "Your last favorite will be displayed here"
+    }
+  }
   newsCardTemplate(article) {
     let image
     if (article.image_url == null) {
@@ -55,5 +65,8 @@ export default class NewsList {
       article,
       true
     );
+  }
+  render(article) {
+    this.listElement.innerHTML = this.newsCardTemplate(article)
   }
 }

@@ -1,5 +1,11 @@
 @media only screen and (min-width: 58em) {
 
+
+    main {
+        max-width: 80%;
+        margin-left: 10%;
+    }
+
     /*Header Styles*/
   header {
     flex-direction: row;
@@ -8,6 +14,7 @@
     max-width: 86%;
     justify-content: space-between;
     padding-bottom: 1%;
+    text-align: start;
   }
   
   header .company {
@@ -19,6 +26,33 @@
     justify-content: space-around;
     align-items: center;
     width: 20em;
+  }
+
+  /*Main Styles*/
+  #main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #news-highlights {
+    grid-column: 2/3;
+    grid-row: 1/4;
+  }
+
+  .weather-sections, .favorite-link, #recent-favorite {
+    grid-column: 1/2;
+  }
+
+  .weather-sections {
+    grid-row: 1/2;
+  }
+
+  .favorite-link {
+    grid-row: 2/3;
+  }
+
+  #recent-favorite {
+    grid-row: 3/4;
   }
 
     /*Article Styles*/

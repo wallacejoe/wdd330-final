@@ -11,6 +11,9 @@ loadHeaderFooter()
 const element = document.getElementById("news-highlights")
 news.initHighlights(element)
 
+const favoriteElement = document.getElementById("recent-favorite")
+news.initFavorites(favoriteElement)
+
 const newsElement = document.getElementById("articles")
 news.init(newsElement)
 

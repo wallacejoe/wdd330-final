@@ -40,6 +40,11 @@ header {
   padding: 0 2% 3% 2%;
 }
 
+header a {
+  color: var(--font-color);
+  text-decoration: none;
+}
+
 header .company {
   font-size: 60%;
   padding: 5%;
@@ -59,6 +64,10 @@ header .company h1 {
 }
 
 /*Main Styles*/
+#main-grid a {
+  text-align: center;
+}
+
 .content, .news-card, button, .article-detail {
   background-color: var(--secondary-color);
   border: 1px solid black;
@@ -67,7 +76,7 @@ header .company h1 {
   justify-content: center;
 }
 
-#news-highlights, #articles {
+#news-highlights, #articles, #recent-favorite {
   background-color: var(--primary-color);
   border: 1px solid black;
   margin: 5%;
@@ -89,6 +98,7 @@ header .company h1 {
   margin: 5%;
   padding: 5%;
   background-color: var(--primary-color);
+  border: 1px solid black;
 }
 
 .weather {
@@ -132,7 +142,7 @@ header .company h1 {
 }
 
 /*Button Styles*/
-button {
+#nextPage {
   width: 90%;
 }
 
@@ -143,11 +153,13 @@ button:hover {
 #searchBar {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 #searchBtn {
   margin: 0 5% 0 0;
   height: 3em;
+  align-items: center;
 }
 
 .search {
