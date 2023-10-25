@@ -83,7 +83,7 @@ header .company h1 {
   justify-content: center;
 }
 
-.content:hover, .news-card:hover, .article-detail:hover {
+.news-card:hover, .article-detail:hover {
   box-shadow: 3px 3px 3px rgb(50, 50, 50);
 }
 
