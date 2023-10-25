@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@300&family=Rubik&display=swap');
+
 :root {
-  --font-body: Arial, Helvetica, sans-serif;
-  --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  --font-body: Roboto, Helvetica, sans-serif;
+  --font-headline: Rubik, Arial, 'Times New Roman';
   /* colors */
   --primary-color: #4657f0;
   --secondary-color: grey;
@@ -15,6 +17,11 @@ body {
   font-size: var(--font-base);
   color: var(--font-color);
 }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-headline);
+}
+
 img {
   max-width: 100%;
 }

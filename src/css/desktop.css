@@ -36,7 +36,7 @@
 
   #news-highlights {
     grid-column: 2/3;
-    grid-row: 1/4;
+    grid-row: 1/ span 4;
     align-items: center;
   }
 
@@ -53,7 +53,7 @@
   }
 
   #recent-favorite {
-    grid-row: 3/5;
+    grid-row: 3/ span 1;
   }
 
     /*Article Styles*/
