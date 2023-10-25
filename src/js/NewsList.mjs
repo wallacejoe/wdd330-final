@@ -5,15 +5,20 @@ export default class NewsList {
     //this.category = category;
     this.dataSource = dataSource;
     this.listElement;
+    this.articleList = [];
     this.list = [];
   }
   async init(element, param = "", search = false) {
+    if (search) {
+      this.articleList = []
+    }
     const data = await this.dataSource.getData(param, search)
     data.results.forEach(article => {
       this.list.push(article)
+      this.articleList.push(article)
     });
     this.listElement = element
-    const articles = this.list
+    const articles = this.articleList
     this.renderList(articles)
     document.getElementById("nextPage").setAttribute("value", `${data.nextPage}`)
     // stores a list of articles to local storage.
@@ -32,7 +37,8 @@ export default class NewsList {
     const data = getLocalStorage("so-favorites") || []
     this.listElement = element
     if (data.length > 0) {
-      this.render(data[data.length - 1])
+      renderWithTemplate(this.newsCardTemplate(data[data.length - 1]), this.listElement)
+      this.list.push(data[data.length - 1])
     }
     else {
       this.listElement.textContent = "Your last favorite will be displayed here"
@@ -40,6 +46,15 @@ export default class NewsList {
   }
   newsCardTemplate(article) {
     let image
+    if (article.creator == null) {
+      article.creator = "Unknown"
+    }
+    if (article.description == null) {
+      article.description = "No description"
+    }
+    else if (article.description.length > 1000) {
+      article.description = "Veiw article for more details"
+    }
     if (article.image_url == null) {
       image = `<a href="./ArticlePage/articles.html?id=${article.article_id}">View article</a>`
     } else {
@@ -66,7 +81,7 @@ export default class NewsList {
       true
     );
   }
-  render(article) {
+  /*render(article) {
     this.listElement.innerHTML = this.newsCardTemplate(article)
-  }
+  }*/
 }
